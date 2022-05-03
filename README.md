@@ -1,7 +1,7 @@
-<h1 align="center">
+<h1 align="center">Interactive JS</h1>
 
 <h4 align="center">
-  Interactive JS</h1>This repository contains the code for interactive app created with JS
+  This repository contains the code for interactive app created with JS
 </h4>
 
 ## Getting Started
