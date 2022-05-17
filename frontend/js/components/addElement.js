@@ -4,14 +4,13 @@ import View from "../view.js";
 
 export default class AddElement {
      constructor() {
-          this.view = new View()
+          this.btn = document.getElementById('button')
           this.model = new Model()
           this.render()
      }
 
      onClick(callback) {
-          this.view.btn.onclick = () => {
-               console.log(this.model.characters.results);
+          this.btn.onclick = () => {
                const newDiv = document.createElement('p')
                newDiv.innerText = `Hola`
                this.view.hello.appendChild(newDiv)

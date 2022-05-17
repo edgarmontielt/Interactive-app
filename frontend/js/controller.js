@@ -19,6 +19,7 @@ export default class Controller {
 
      render() {
           console.log(this.view);
+          console.log(this.model.characters);
           this.view.btn.onclick = () => {
                alert('hola')
           }
