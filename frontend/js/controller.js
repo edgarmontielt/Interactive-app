@@ -1,27 +1,27 @@
 'use strict'
 
 import AddElement from "./components/addElement.js"
-import Model from "./model.js"
 
 export default class Controller {
-     constructor() {
-          this.model = null
-          this.view = null
-     }
-
-     setView(view) {
-          this.view = view
-     }
-
-     setModel(model) {
+     constructor(view, model) {
           this.model = model
+          this.view = view
+          this.view.btn.onclick = () => {
+               this.addList()
+          }
      }
 
-     render() {
-          console.log(this.view);
-          console.log(this.model.characters);
-          this.view.btn.onclick = () => {
-               alert('hola')
-          }
+     addList(list) {
+          this.view.formRender()
+     }
+
+     async render() {
+          const cards = await this.model.getData()
+          cards.forEach(item => {
+               const p = document.createElement('p')
+               p.innerText = item.name
+               const card = `<div class="card"><h1 class="title">${item.title}</h1></div>`
+               root.innerHTML += card
+          })
      }
 }

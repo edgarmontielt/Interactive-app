@@ -1,15 +1,17 @@
 'use strict'
-import View from "./view.js";
-import getData from "./utils/getData.js"
+
+import { getData, newList } from "./utils/getData.js"
 
 export default class Model {
      constructor() {
-          this.characters = []
-          this.getData()
+     }
+
+     async createCard(list, callback) {
+          
      }
 
      async getData() {
-          const characters = await getData('character')
-          this.characters = characters
+          const lists = await getData('lists')
+          return lists
      }
 }

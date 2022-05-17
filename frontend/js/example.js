@@ -2,19 +2,18 @@ import getData from "./utils/getData.js"
 
 const root = document.getElementById('root')
 
-const render = (elements) => {
+function render(elements) {
     elements.forEach(item => {
-        console.log(item);
         const p = document.createElement('p')
         p.innerText = item.nam
-        const card = `<div class="card">${item.name}</div>`
+        const card = `<div class="card"><h1 class="title">${item.title}</h1></div>`
         root.innerHTML += card
     })
 }
 
-const get = async () => {
-    const characters = await getData('character')
-    render(characters.results)
+async function get() {
+    const lists = await getData('lists')
+    render(lists)
 }
 
 get()
