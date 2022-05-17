@@ -5,16 +5,22 @@ import Model from "./model.js"
 
 export default class Controller {
      constructor() {
-          this.model = new Model()
-          this.example = document.getElementById('example')
-          this.newElement = new AddElement()
-
-          this.newElement.onClick((element) => {
-               this.addElement(element)
-          })
+          this.model = null
+          this.view = null
      }
 
-     addElement(element) {
-         this.model.addElement(element)
+     setView(view) {
+          this.view = view
+     }
+
+     setModel(model) {
+          this.model = model
+     }
+
+     render() {
+          console.log(this.view);
+          this.view.btn.onclick = () => {
+               alert('hola')
+          }
      }
 }
