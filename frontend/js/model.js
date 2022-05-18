@@ -1,19 +1,20 @@
 'use strict'
 
-import { getData, newList } from "./utils/getData.js"
+import { getData, createTodo, deleteTodo } from "./utils/index.js"
 
 export default class Model {
-     constructor() {
-          this.formNewCard = document.getElementById('new_card')
-          console.log(formNewCard);
-     }
-
-     async createCard(list, callback) {
-          const res = await newList('list/create', list)
-     }
 
      async getData() {
           const lists = await getData('lists')
           return lists
+     }
+
+     async newTodo(todo) {
+          const result = await createTodo('lists/create', todo)
+          return result
+     }
+
+     async deleteTodo(id) {
+          const result = await deleteTodo(`lists/delete/${id}`)
      }
 }

@@ -1,41 +1,39 @@
-import { getData, newList } from "./utils/getData.js"
+import FormRender from "./components/form.js"
+import { getData, newList } from "./utils/index.js"
 
 const root = document.getElementById('root')
 const btn = document.getElementById('button')
 const formCont = document.getElementById('form_container')
 
+const formRend = new FormRender()
+
 const data = await getData('lists')
-const formStr = `
-        <form id="new_card" class=" flex flex-col w-1/3 gap-7 toggle">
-             <input type="text" name="title" class="p-2 rounded-md">
-             <input type="text" name="description" class=" p-2 rounded-md">
-             <select name="importance" id="" class=" p-2 rounded-md">
-                  <option value="1">1</option>
-                  <option value="1">2</option>
-                  <option value="1">3</option>
-             </select>
-             <button class=" bg-blue-600 text-white p-2 rounded-md hover:">Enviar</button>
-        </form>
-`
 render(data)
 
 function render(elements) {
+    root.innerHTML = ''
     elements.forEach(item => {
         const p = document.createElement('p')
         p.innerText = item.name
-        const card = `<div class="card"><h1 class="title">${item.title}</h1></div>`
+        const card = `
+            <div class="card ${item.importance === 1 ? ' bg-red-900' : 'bg-green-900'}" draggable="true">
+                <h1 class="title mb-10">${item.title}</h1>
+                <p class=" text-white title"> ${item.description}</p>
+            </div>
+        `
         root.innerHTML += card
     })
-    formCont.innerHTML = formStr
+    // formCont.innerHTML = formStr
+    formRend.render()
 }
 
 const form = document.getElementById('new_card')
 
-function viewForm() {
-    form.classList.toggle('toggle')
+function activeOrDisactiveForm() {
+    formCont.classList.toggle('toggle')
 }
 
-btn.onclick = viewForm
+btn.onclick = activeOrDisactiveForm
 
 form.onsubmit = async (event) => {
     event.preventDefault();
@@ -46,11 +44,11 @@ form.onsubmit = async (event) => {
     } = event.target
 
     const result = await newList('lists/create', { title, description, importance })
-    render(filterData(result))
+    activeOrDisactiveForm()
+    render(reloadData(result))
 }
 
-function filterData(item) {
-    const newData = data.push(item)
-    console.log(newData);
+function reloadData(item) {
+    const newData = [...data, item]
     return newData
 }

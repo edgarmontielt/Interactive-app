@@ -7,7 +7,7 @@ async function getData(path) {
      return data
 }
 
-async function newList(path, data) {
+async function createTodo(path, data) {
      const result = fetch(`${baseURL}/${path}`, {
           method: 'POST',
           headers: {
@@ -20,4 +20,16 @@ async function newList(path, data) {
      return result
 }
 
-export { getData, newList }
+async function deleteTodo(path, id) {
+     const result = fetch(`${baseURL}/${path}`, {
+          method: 'DELETE',
+          headers: {
+               'Content-Type': 'application/json'
+          }
+     })
+          .then(res => res.json())
+          .then(data => data)
+     return result
+}
+
+export { getData, createTodo, deleteTodo }

@@ -1,27 +1,46 @@
 'use strict'
 
-import AddElement from "./components/addElement.js"
+import Row from "./components/row.js"
 
 export default class Controller {
      constructor(view, model) {
           this.model = model
           this.view = view
-          this.view.btn,onclick = () => {
-               this.addList()
+          this.view.btn.onclick = () => {
+               this.viewForm()
           }
-     }
-
-     addList(list) {
-          this.view.formRender()
-     }
-
-     async render() {
-          const cards = await this.model.getData()
-          cards.forEach(item => {
-               const p = document.createElement('p')
-               p.innerText = item.name
-               const card = `<div class="card"><h1 class="title">${item.title}</h1></div>`
-               root.innerHTML += card
+          this.row = new Row()
+          this.view.createForm.onSubmit((todo) => this.newTodo(todo))
+          this.row.onClick(() => {
+               
           })
+     }
+
+     renderTable() {
+          this.view.renderTable()
+     }
+
+     viewForm() {
+          this.view.viewForm()
+     }
+
+     async getAndRenderData() {
+          const tbody = document.getElementById('tbody')
+          const cards = await this.model.getData()
+          this.row.render(tbody, cards)
+     }
+
+     async newTodo(todo) {
+          await this.model.newTodo(todo)
+          this.viewForm()
+          this.reloadData()
+     }
+
+     async deleteTodo(id) {
+
+     }
+
+     reloadData() {
+          this.getAndRenderData()
      }
 }
