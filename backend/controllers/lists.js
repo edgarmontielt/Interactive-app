@@ -13,6 +13,7 @@ class ListController {
 
     async create(req, res) {
         try {
+            console.log(req.body);
             const result = await lists.create(req.body)
             return res.json(result)
         } catch (error) {

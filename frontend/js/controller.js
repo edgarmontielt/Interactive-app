@@ -6,7 +6,7 @@ export default class Controller {
      constructor(view, model) {
           this.model = model
           this.view = view
-          this.view.btn.onclick = () => {
+          this.view.btn,onclick = () => {
                this.addList()
           }
      }
