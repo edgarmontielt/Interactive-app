@@ -29,7 +29,7 @@ export default class Row {
                          ${item.importance}
                     </td>
                     <td class="px-6 py-4 text-center">
-                         <input type="checkbox" ${item.status ? 'checked' : ''}/>
+                         <input type="checkbox" ${item.status ? 'checked' : ''} class=" w-5 h-5"/>
                     </td>
                     <td class="px-6 py-4 flex gap-8">
                          <p id='${item._id}' class="delete font-medium text-red-500 hover:underline cursor-pointer">Delete</p>
