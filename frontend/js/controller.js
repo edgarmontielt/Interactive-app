@@ -6,14 +6,10 @@ export default class Controller {
      constructor(view, model) {
           this.model = model
           this.view = view
-          this.view.btn.onclick = () => {
-               this.viewForm()
-          }
+          this.view.btn.onclick = () => this.viewForm()
           this.row = new Row()
           this.view.createForm.onSubmit((todo) => this.newTodo(todo))
-          this.row.onClick(() => {
-               
-          })
+          this.todos = []
      }
 
      renderTable() {
@@ -25,9 +21,10 @@ export default class Controller {
      }
 
      async getAndRenderData() {
-          const tbody = document.getElementById('tbody')
           const cards = await this.model.getData()
-          this.row.render(tbody, cards)
+          this.todos = cards
+          this.view.renderRows(cards)
+          this.row.onClick((id) => this.deleteTodo(id))
      }
 
      async newTodo(todo) {
@@ -36,11 +33,17 @@ export default class Controller {
           this.reloadData()
      }
 
-     async deleteTodo(id) {
-
+     deleteTodo(id) {
+          this.model.deleteTodo(id)
+          this.filterData(id)
      }
 
      reloadData() {
           this.getAndRenderData()
+     }
+
+     filterData(id) {
+          const newTodos = this.todos.filter(todo => todo._id != id)
+          this.view.renderRows(newTodos)
      }
 }

@@ -2,6 +2,7 @@
 
 import FormRender from "./components/form.js"
 import Table from "./components/table.js"
+import Row from "./components/row.js"
 
 export default class View {
      constructor() {
@@ -10,6 +11,7 @@ export default class View {
           this.createForm = new FormRender()
           this.createForm.render()
           this.table = new Table()
+          this.row = new Row()
      }
 
      renderTable() {
@@ -17,6 +19,11 @@ export default class View {
      }
 
      viewForm() {
-          this.createForm.activeOrDisactiveForm()    
+          this.createForm.activeOrDisactiveForm()
+     }
+
+     renderRows(data) {
+          const tbody = document.getElementById('tbody')
+          this.row.render(tbody, data)
      }
 }

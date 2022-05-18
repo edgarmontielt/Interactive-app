@@ -21,7 +21,7 @@ async function createTodo(path, data) {
 }
 
 async function deleteTodo(path, id) {
-     const result = fetch(`${baseURL}/${path}`, {
+     const result = await fetch(`${baseURL}/${path}`, {
           method: 'DELETE',
           headers: {
                'Content-Type': 'application/json'
