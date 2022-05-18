@@ -8,4 +8,6 @@ router.get('/', listController.getAll)
 
 router.post('/create', listController.create)
 
+router.delete('/delete/:id', listController.deleteTodo)
+
 module.exports = router
