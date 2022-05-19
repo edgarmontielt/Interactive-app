@@ -9,7 +9,18 @@ export default class Row {
           const elements = document.querySelectorAll('.delete')
           elements.forEach(item => {
                item.onclick = (event) => {
-                    callback(event.target.id)
+                    const id = event.target.id.slice(0, -1);
+                    callback(id)
+               }
+          })
+     }
+
+     onClickStatus(callback) {
+          const elements = document.querySelectorAll('.update')
+          elements.forEach(item => {
+               item.onclick = (event) => {
+                    const id = event.target.id.slice(0, -1);
+                    callback(id)
                }
           })
      }
@@ -41,14 +52,15 @@ export default class Row {
                     <td class="px-6 py-4">
                          ${item.description}
                     </td>
-                    <td class="px-6 py-4 text-center">
-                         ${item.importance}
+                    <td class="px-6 py-4 flex justify-center">
+                         ${item.importance === 1 ? '<div class="w-4 h-4 rounded-full bg-red-600"></div>' : '<div class="w-4 h-4 rounded-full bg-emerald-600"></div>'}
+                         
                     </td>
                     <td class="px-6 py-4 text-center">
-                         <input type="checkbox" ${item.status ? 'checked' : ''} class=" w-5 h-5"/>
+                         <input id=${item._id + 1} type="checkbox" ${item.status ? 'checked' : ''} class=" update w-5 h-5"/>
                     </td>
                     <td class="px-6 py-4 flex gap-8">
-                         <p id=${item._id} class="delete font-medium text-red-500 hover:underline cursor-pointer">Delete</p>
+                         <p id=${item._id + 2} class="delete font-medium text-red-500 hover:underline cursor-pointer">Delete</p>
                          <p class="font-medium text-blue-500 hover:underline cursor-pointer">Edit</p>
                     </td>
                </tr>

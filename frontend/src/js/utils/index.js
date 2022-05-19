@@ -21,7 +21,7 @@ async function createTodo(path, data) {
 }
 
 async function deleteTodo(path, id) {
-     const result = await fetch(`${baseURL}/${path}`, {
+     const result = fetch(`${baseURL}/${path}`, {
           method: 'DELETE',
           headers: {
                'Content-Type': 'application/json'
@@ -32,4 +32,16 @@ async function deleteTodo(path, id) {
      return result
 }
 
-export { getData, createTodo, deleteTodo }
+async function updateStatus(path, id) {
+     const result = fetch(`${baseURL}/${path}/${id}`, {
+          method: 'PUT',
+          headers: {
+               'Content-Type': 'application/json'
+          }
+     })
+          .then(res => res.json())
+          .then(data => data)
+     return result
+}
+
+export { getData, createTodo, deleteTodo, updateStatus }

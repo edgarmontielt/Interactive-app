@@ -8,7 +8,9 @@ class Navbar {
 
     onClick(callback) {
         const btnAdd = document.getElementById('button-add')
+        const btnClose = document.getElementById('close-modal')
         btnAdd.onclick = () => callback()
+        btnClose.onclick = () => callback()
     }
 
     onDrop(callback) {
@@ -36,17 +38,26 @@ class Navbar {
         const navbar = `
             <h1 class="text-4xl font-medium">JSTodoList</h1>
             <nav class="ml-auto">
-                <ul class=" flex gap-6">
+                <ul class=" flex gap-12">
+                        <li class="flex items-center justify-center gap-4">
+                            <section class="flex gap-4 items-center">
+                                <div class="w-4 h-4 rounded-full bg-red-600"></div>
+                                Urgent
+                            </section
+                            <section  class="flex gap-0 items-center">
+                                <div class="w-4 h-4 rounded-full bg-emerald-600"></div>
+                                Normal
+                            </section>
+                        </li>
                         <li>
-                            <button id="button-add" class=" flex bg-blue-600 rounded-full px-10 py-2 items-center hover:opacity-70 ">
+                            <button id="button-add" class=" flex bg-blue-600 rounded-full px-10 py-3 items-center hover:opacity-70 ">
                                 <img src="../../public/svg/add.svg" alt="addTodo"/>
                                 <span>New</span>
                             </button>
                         </li>
                         <li>
-                            <button id="button-remove" class=" flex bg-red-600 rounded-full px-10 py-2 items-center hover:opacity-70 ">
-                                <img src="../../public/svg/add.svg" alt="addTodo"/>
-                                <span>Delete</span>
+                            <button id="button-remove" class=" flex bg-red-600 rounded-full px-10 py-3 items-center hover:opacity-70 ">
+                                <img src="../../public/svg/trash-ligth.svg" alt="trash"/>
                             </button>
                         </li>
                 </ul>

@@ -9,7 +9,7 @@ export default class Controller {
           this.row = new Row()
           this.view.createForm.onSubmit((todo) => this.newTodo(todo))
           this.view.nav.onClick(() => { this.viewForm() })
-          this.view.nav.onDrop((id) => { this.deleteTodo(id)})
+          this.view.nav.onDrop((id) => { this.deleteTodo(id) })
           this.todos = []
      }
 
@@ -26,6 +26,7 @@ export default class Controller {
           this.todos = cards
           this.view.renderRows(cards)
           this.row.onClick((id) => this.deleteTodo(id))
+          this.row.onClickStatus((id) => this.updateStatus(id))
           this.row.onDrag()
      }
 
@@ -36,8 +37,15 @@ export default class Controller {
      }
 
      deleteTodo(id) {
-          this.model.deleteTodo(id)
-          this.filterData(id)
+          const value = confirm('¿Estas Seguro?')
+          if (value) {
+               this.model.deleteTodo(id)
+               this.filterData(id)
+          }
+     }
+
+     updateStatus(id) {
+          this.model.updateStatus(id)
      }
 
      reloadData() {

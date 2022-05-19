@@ -3,6 +3,7 @@
 class Table {
     render(root) {
         const table = `
+        <div id="shape3"></div>
             <table class="w-full text-sm text-left text-gray-400">
                 <thead class="text-xs uppercase bg-gray-700 text-gray-400">
                     <tr>
@@ -18,7 +19,7 @@ class Table {
                         <th scope="col" class="px-6 py-3 text-center">
                             Complete
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             Actions
                         </th>
                     </tr>
