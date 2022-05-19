@@ -18,7 +18,7 @@ class Navbar {
         
         btnRemove.ondragover = (event) => {
             event.preventDefault();
-            btnRemove.style.opacity = .9
+            btnRemove.style.opacity = .7
         }
 
         btnRemove.ondragleave = (event) => {
@@ -36,7 +36,7 @@ class Navbar {
 
     render() {
         const navbar = `
-            <h1 class="text-4xl font-medium">JSTodoList</h1>
+            <h1 class="text-4xl font-medium">TodoList</h1>
             <nav class="ml-auto">
                 <ul class=" flex gap-12">
                         <li class="flex items-center justify-center gap-4">
@@ -56,7 +56,7 @@ class Navbar {
                             </button>
                         </li>
                         <li>
-                            <button id="button-remove" class=" flex bg-red-600 rounded-full px-10 py-3 items-center hover:opacity-70 ">
+                            <button id="button-remove" class=" flex bg-red-600 rounded-full px-10 py-3 items-center">
                                 <img src="../../public/svg/trash-ligth.svg" alt="trash"/>
                             </button>
                         </li>

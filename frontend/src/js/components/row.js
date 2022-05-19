@@ -59,9 +59,16 @@ export default class Row {
                     <td class="px-6 py-4 text-center">
                          <input id=${item._id + 1} type="checkbox" ${item.status ? 'checked' : ''} class=" update w-5 h-5"/>
                     </td>
-                    <td class="px-6 py-4 flex gap-8">
-                         <p id=${item._id + 2} class="delete font-medium text-red-500 hover:underline cursor-pointer">Delete</p>
-                         <p class="font-medium text-blue-500 hover:underline cursor-pointer">Edit</p>
+                    
+                    <td class="px-6 py-4 flex gap-8 justify-center">
+                         <p id=${item._id + 2} class="delete font-semibold text-red-500 hover:underline cursor-pointer">Delete</p>
+                         <p class="font-semibold text-blue-500 hover:underline cursor-pointer">Edit</p>
+                    </td>
+                    <td class="px-3 py-4 gap-8 text-center">
+                         ${item.createdAt.split('T')[0]}
+                    </td>
+                    <td class="px-3 py-4 gap-8 text-center">
+                         ${item.createdAt.split('T')[1].split(':', 2).join(':')}
                     </td>
                </tr>
               `
