@@ -17,7 +17,7 @@ class Auth {
                 return res.json({ message: 'Logged', session: req.session })
             }
 
-            return res.statu(402).json({ message: 'User not found' })
+            return res.status(402).json({ message: 'User not found' })
 
         } catch (error) {
             console.log(error);

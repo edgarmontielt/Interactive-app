@@ -30,6 +30,32 @@ class ListController {
     async deleteTodo(req, res) {
         try {
             const result = await lists.findByIdAndDelete(req.params.id)
+            console.log(result);
+            return result
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async updateTodo(req, res) {
+        try {
+            const result = await lists.findByIdAndUpdate(req.params.id, req.body, { new: true })
+            return res.json(result)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async updateStatus(req, res) {
+        try {
+            const { status } = await lists.findOne({ _id: req.params.id })
+            if (!status) {
+                const result = await lists.updateOne({ _id: req.params.id }, { $set: { status: true } })
+                return res.json(result)
+            }
+
+            const result = await lists.updateOne({ _id: req.params.id }, { $set: { status: false } })
+            return res.json(result)
         } catch (error) {
             console.log(error);
         }

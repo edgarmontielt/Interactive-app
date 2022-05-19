@@ -13,6 +13,7 @@ export default class Controller {
           this.view.nav.onDrop((id) => this.deleteTodo(id))
           this.view.login.activeMenu()
           this.view.login.closeMenu()
+          this.logIn()
      }
 
      renderTable() {
@@ -21,6 +22,11 @@ export default class Controller {
 
      viewForm() {
           this.view.viewForm()
+     }
+
+     async logIn(data) {
+          const res = this.model.logIn(data)
+          return res
      }
 
      async getData() {

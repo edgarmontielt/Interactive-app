@@ -7,7 +7,7 @@ function getData(path) {
      return data
 }
 
-function createTodo(path, data) {
+function post(path, data) {
      const result = fetch(`${baseURL}/${path}`, {
           method: 'POST',
           headers: {
@@ -56,4 +56,4 @@ function updateTodo(path, id, data) {
      return result
 }
 
-export { getData, createTodo, deleteTodo, updateStatus, updateTodo }
+export { getData, post, deleteTodo, updateStatus, updateTodo }

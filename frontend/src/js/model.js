@@ -1,8 +1,13 @@
 'use strict'
 
-import { getData, createTodo, deleteTodo, updateStatus, updateTodo } from "./utils/index.js"
+import { getData, post, deleteTodo, updateStatus, updateTodo } from "./utils/index.js"
 
 export default class Model {
+
+     logIn(data) {
+          const result = post('auth/login', data)
+          return result
+     }
 
      async getData() {
           const lists = await getData('lists')
@@ -10,7 +15,7 @@ export default class Model {
      }
 
      async newTodo(todo) {
-          const result = await createTodo('lists/create', todo)
+          const result = await post('lists/create', todo)
           return result
      }
 

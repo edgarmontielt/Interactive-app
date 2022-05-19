@@ -33,16 +33,27 @@ export default class Login {
         }
     }
 
-    onSubmit() {
+    // onSubmit() {
+    //     const login = document.getElementById('login')
+    //     console.log(login);
+    //     login.onsubmit = (event) => {
+    //         event.preventDefault()
+    //         const {
+    //             email: { value: email },
+    //             password: { value: password },
+    //         } = event.target
+    //         console.log(email, password );
 
-    }
+    //         callback({ email, password })
+    //     }
+    // }
 
 
     render() {
         const login = `
-        <aside class=" aside h-screen w-1/4 fixed bg-[#0a1024eb] top-0  right-0 text-white px-10 py-32">
-            <form class=" flex flex-col gap-7">
-                <h1 class=" text-3xl font-medium mb-10"> LogIn</h1>
+        <aside class=" aside h-screen w-1/4 fixed bg-[#0a1024eb] top-0  right-0 px-10 py-32">
+            <form id="login" class=" flex flex-col gap-7">
+                <h1 class=" text-3xl font-medium mb-10 text-white"> LogIn</h1>
                 <input 
                     type="email" 
                     placeholder="Email" 
@@ -56,7 +67,7 @@ export default class Login {
                     class=" px-5 py-1 
                     rounded outline-none"
                     />
-                <button class="">SignIn</button>
+                <button class="text-white">SignIn</button>
             </form>
         </aside>
         `

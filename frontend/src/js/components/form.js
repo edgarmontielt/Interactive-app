@@ -23,6 +23,7 @@ export default class FormRender {
 
     onSubmit(callback) {
         const form = document.getElementById('new_todo')
+        console.log(form);
         form.onsubmit = (event) => {
             event.preventDefault()
             const {

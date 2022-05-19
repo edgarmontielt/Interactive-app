@@ -37,8 +37,8 @@ class Navbar {
         const navbar = `
             <h1 class="text-4xl font-medium">TodoList</h1>
             <nav class="ml-auto">
-            <div id="close-nav" class=" w-10 h-10 right-2 absolute top-5 rounded-full bg-gray-200 mb-8 flex justify-center hover:bg-gray-300 cursor-pointer">
-                <img src="../../public/svg/close.svg" class="mx-auto mt-10"/>
+            <div id="close-nav" class=" right-2 absolute top-5 rounded-full bg-gray-200 mb-8 flex justify-center hover:bg-gray-300 cursor-pointer">
+                <img src="../../public/svg/close.svg" class="mx-auto"/>
             </div>
                 <ul class=" flex gap-12">
                         <li class="flex items-center justify-center gap-4">
