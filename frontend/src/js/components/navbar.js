@@ -15,7 +15,6 @@ class Navbar {
 
     onDrop(callback) {
         const btnRemove = document.getElementById('button-remove')
-        
         btnRemove.ondragover = (event) => {
             event.preventDefault();
             btnRemove.style.opacity = .7
@@ -38,6 +37,9 @@ class Navbar {
         const navbar = `
             <h1 class="text-4xl font-medium">TodoList</h1>
             <nav class="ml-auto">
+            <div id="close-nav" class=" w-10 h-10 right-2 absolute top-5 rounded-full bg-gray-200 mb-8 flex justify-center hover:bg-gray-300 cursor-pointer">
+                <img src="../../public/svg/close.svg" class="mx-auto mt-10"/>
+            </div>
                 <ul class=" flex gap-12">
                         <li class="flex items-center justify-center gap-4">
                             <section class="flex gap-4 items-center">
@@ -60,6 +62,9 @@ class Navbar {
                                 <img src="../../public/svg/trash-ligth.svg" alt="trash"/>
                             </button>
                         </li>
+                        <li id="open-nav" class=" flex items-center cursor-pointer hover:underline">
+                            Login
+                        </li>
                 </ul>
             </nav>
         `
@@ -69,3 +74,7 @@ class Navbar {
 }
 
 export default Navbar
+
+{/* <button id="open-nav" class=" flex bg-blue-600 rounded-full py-3 px-5 items-center">
+E
+</button> */}

@@ -77,3 +77,31 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.aside {
+  z-index: 1;
+  display: none;
+}
+
+#close-nav {
+  z-index: 1;
+  display: none;
+}
+
+@keyframes openNav {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes closeNav {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

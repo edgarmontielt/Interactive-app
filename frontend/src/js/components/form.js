@@ -36,7 +36,6 @@ export default class FormRender {
     }
 
     render(data) {
-        // console.log(data ? data : 'hola');
         const form = `
         <div id="close-modal" class=" w-10 h-10 right-2 absolute top-5 rounded-full bg-gray-200 mb-8 flex hover:bg-gray-300 cursor-pointer">
             <img src="../../public/svg/close.svg" class="m-auto"/>

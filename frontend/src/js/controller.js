@@ -6,11 +6,13 @@ export default class Controller {
      constructor(view, model) {
           this.model = model
           this.view = view
+          this.todos = []
           this.row = new Row()
           this.view.createForm.onSubmit((todo) => this.newTodo(todo))
-          this.view.nav.onClick(() => { this.viewForm() })
-          this.view.nav.onDrop((id) => { this.deleteTodo(id) })
-          this.todos = []
+          this.view.nav.onClick(() => this.viewForm())
+          this.view.nav.onDrop((id) => this.deleteTodo(id))
+          this.view.login.activeMenu()
+          this.view.login.closeMenu()
      }
 
      renderTable() {
@@ -32,12 +34,7 @@ export default class Controller {
           this.view.renderRows(todos)
           this.row.onClick((id) => this.deleteTodo(id))
           this.row.onClickStatus((id) => this.updateStatus(id))
-          this.row.onClickEdit((id) => {
-               this.viewForm()
-               // const todo = this.filterTodo(cards, id) //Filter todo 
-               // console.log(todo);
-               // this.view.renderForm(todo)
-          })
+          this.row.onClickEdit(() => this.viewForm())
           this.row.onDrag()
      }
 
@@ -76,6 +73,7 @@ export default class Controller {
           const newTodos = this.todos.filter(todo => todo._id != id)
           this.todos = newTodos
           this.view.renderRows(newTodos)
+          this.view.nav.onClick(() => { this.viewForm() })
           this.row.onClick((id) => this.deleteTodo(id))
           this.row.onDrag()
      }

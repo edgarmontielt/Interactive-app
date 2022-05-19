@@ -4,12 +4,15 @@ import FormRender from "./components/form.js"
 import Table from "./components/table.js"
 import Row from "./components/row.js"
 import Navbar from "./components/navbar.js"
+import Login from "./components/login.js"
 
 export default class View {
      constructor() {
           this.root = document.getElementById('root')
           this.nav = new Navbar()
           this.nav.render()
+          this.login = new Login()
+          this.login.render()
           this.createForm = new FormRender()
           this.renderForm()
           this.table = new Table()
