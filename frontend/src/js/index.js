@@ -11,5 +11,3 @@ document.addEventListener('DOMContentLoaded', () => {
     ctrl.renderTable()
     ctrl.getAndRenderData()
 })
-
-

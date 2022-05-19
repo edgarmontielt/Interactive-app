@@ -8,7 +8,7 @@ export default class Controller {
           this.view = view
           this.todos = []
           this.row = new Row()
-          this.view.createForm.onSubmit((todo) => this.newTodo(todo))
+          this.view.createForm.onSubmit((todo) => update ? this.newTodo(todo): this.updateTodo(todo))
           this.view.nav.onClick(() => this.viewForm())
           this.view.nav.onDrop((id) => this.deleteTodo(id))
           this.view.login.activeMenu()

@@ -86,6 +86,7 @@ body {
 #close-nav {
   z-index: 1;
   display: none;
+  position: fixed;
 }
 
 @keyframes openNav {
