@@ -6,9 +6,10 @@ export default class Controller {
      constructor(view, model) {
           this.model = model
           this.view = view
-          this.view.btn.onclick = () => this.viewForm()
           this.row = new Row()
           this.view.createForm.onSubmit((todo) => this.newTodo(todo))
+          this.view.nav.onClick(() => { this.viewForm() })
+          this.view.nav.onDrop((id) => { this.deleteTodo(id)})
           this.todos = []
      }
 
@@ -25,6 +26,7 @@ export default class Controller {
           this.todos = cards
           this.view.renderRows(cards)
           this.row.onClick((id) => this.deleteTodo(id))
+          this.row.onDrag()
      }
 
      async newTodo(todo) {

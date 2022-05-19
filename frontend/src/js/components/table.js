@@ -1,3 +1,5 @@
+'use strict'
+
 class Table {
     render(root) {
         const table = `

@@ -9,25 +9,52 @@ body {
 }
 
 #root { 
-     display: flex;
-     flex-wrap: wrap;
-     gap: 16px;
      padding: 3rem;
      justify-content: center;
 }
 
-.card {
-     width: 20%;
-     color: white;
-     padding: 10px;
-     border-radius: 10px;
-}
-
-.title {
-     text-align: center;
-     font-size: 16px
-}
-
 .toggle {
      visibility: hidden;
+}
+
+@keyframes animForm {
+     0%{
+          transform: scale(0);
+          opacity: 0;
+     }
+     25%{
+          opacity: .25;
+          transform: scale(.25);
+     }
+     55%{
+          opacity: .50;
+          transform: scale(.5);
+     }
+     75% {
+          opacity: .70;
+          transform: scale(.75);
+     }
+     100%{
+          opacity: 1;
+          transform: scale(1);
+     }
+}
+
+@keyframes close {
+     0%{
+          transform: scale(1);
+          opacity: 1;
+     }
+     45%{
+          opacity: .70;
+          transform: scale(.5);
+     }
+     75%{
+          opacity: .40;
+          transform: scale(.1);
+     }
+     100%{
+          opacity: 0;
+          transform: scale(0);
+     }
 }
