@@ -1,6 +1,6 @@
 'use strict'
 
-import { getData, createTodo, deleteTodo, updateStatus } from "./utils/index.js"
+import { getData, createTodo, deleteTodo, updateStatus, updateTodo } from "./utils/index.js"
 
 export default class Model {
 
@@ -14,8 +14,13 @@ export default class Model {
           return result
      }
 
-     async deleteTodo(id) {
-          await deleteTodo(`lists/delete/${id}`)
+     deleteTodo(id) {
+          deleteTodo(`lists/delete/${id}`)
+     }
+
+     async updateTodo(id, data) {
+          const result = await updateTodo(id, data)
+          return result
      }
 
      async updateStatus(id) {

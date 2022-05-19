@@ -21,13 +21,29 @@ export default class Controller {
           this.view.viewForm()
      }
 
-     async getAndRenderData() {
+     async getData() {
           const cards = await this.model.getData()
-          this.todos = cards
-          this.view.renderRows(cards)
+          return cards
+     }
+
+     async getAndRenderData() {
+          const todos = await this.getData()
+          this.todos = todos
+          this.view.renderRows(todos)
           this.row.onClick((id) => this.deleteTodo(id))
           this.row.onClickStatus((id) => this.updateStatus(id))
+          this.row.onClickEdit((id) => {
+               this.viewForm()
+               // const todo = this.filterTodo(cards, id) //Filter todo 
+               // console.log(todo);
+               // this.view.renderForm(todo)
+          })
           this.row.onDrag()
+     }
+
+     filterTodo(cards, id) {
+          const todo = cards.filter(item => item._id === id)
+          return todo[0]
      }
 
      async newTodo(todo) {
@@ -44,8 +60,12 @@ export default class Controller {
           }
      }
 
-     updateStatus(id) {
-          this.model.updateStatus(id)
+     async updateTodo(id) {
+          await this.model.updateTodo(id)
+     }
+
+     async updateStatus(id) {
+          await this.model.updateStatus(id)
      }
 
      reloadData() {
@@ -54,6 +74,9 @@ export default class Controller {
 
      filterData(id) {
           const newTodos = this.todos.filter(todo => todo._id != id)
+          this.todos = newTodos
           this.view.renderRows(newTodos)
+          this.row.onClick((id) => this.deleteTodo(id))
+          this.row.onDrag()
      }
 }

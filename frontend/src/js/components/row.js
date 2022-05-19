@@ -25,6 +25,16 @@ export default class Row {
           })
      }
 
+     onClickEdit(callback) {
+          const elements = document.querySelectorAll('.edit')
+          elements.forEach(item => {
+               item.onclick = (event) => {
+                    const id = event.target.id.slice(0, -1);
+                    callback(id)
+               }
+          })
+     }
+
      onDrag() {
           const elements = document.querySelectorAll('tr')
           elements.forEach(item => {
@@ -33,7 +43,6 @@ export default class Row {
                     item.style.position = 'absolute'
                     item.style.opacity = 0
                }
-
                item.ondragend = () => {
                     item.style.position = 'static'
                     item.style.opacity = 1
@@ -62,7 +71,7 @@ export default class Row {
                     
                     <td class="px-6 py-4 flex gap-8 justify-center">
                          <p id=${item._id + 2} class="delete font-semibold text-red-500 hover:underline cursor-pointer">Delete</p>
-                         <p class="font-semibold text-blue-500 hover:underline cursor-pointer">Edit</p>
+                         <p id=${item._id + 3} class="edit font-semibold text-blue-500 hover:underline cursor-pointer">Edit</p>
                     </td>
                     <td class="px-3 py-4 gap-8 text-center">
                          ${item.createdAt.split('T')[0]}

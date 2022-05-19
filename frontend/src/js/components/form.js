@@ -9,7 +9,7 @@ export default class FormRender {
 
     activeOrDisactiveForm() {
         const element = this.formCont
-        if(element.classList.contains('toggle')) {
+        if (element.classList.contains('toggle')) {
             element.style.position = 'absolute'
             element.style.display = 'block'
             element.style.animation = 'animForm .25s'
@@ -31,23 +31,33 @@ export default class FormRender {
                 importance: { value: importance }
             } = event.target
 
-            console.log(title, description, importance);
-
             callback({ title, description, importance })
         }
     }
 
-    render() {
+    render(data) {
+        // console.log(data ? data : 'hola');
         const form = `
         <div id="close-modal" class=" w-10 h-10 right-2 absolute top-5 rounded-full bg-gray-200 mb-8 flex hover:bg-gray-300 cursor-pointer">
             <img src="../../public/svg/close.svg" class="m-auto"/>
         </div>
         <form id="new_todo" class=" flex flex-wrap items-center ">
-            <div class=" flex flex-col gap-7 w-[55%] px-20 py-24">
+            <div class=" flex flex-col flex-wrap gap-7 w-[55%] px-5 md:px-20 py-24">
                 <h1 class="text-4xl font-medium text-white ">New Task</h1>
                 <div class=" w-full h-[1px] bg-red-100 mb-8"></div>
-                <input type="text" name="title" class="p-2 rounded-md outline-none" placeholder="Title">
-                <input type="text" name="description" class=" p-2 rounded-md outline-none" placeholder="Description">
+                <input 
+                    type="text" 
+                    name="title" 
+                    class="p-2 rounded-md outline-none" 
+                    placeholder="Title"
+                    value=${data ? data.title : ''}
+                    >
+                <input 
+                    type="text" 
+                    name="description" 
+                    class=" p-2 rounded-md outline-none" 
+                    placeholder="Description" 
+                    >
                 <select name="importance" id="" class=" p-2 rounded-md outline-none">
                     <option value="1">Urgent</option>
                     <option value="2">Normal</option>

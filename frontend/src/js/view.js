@@ -11,13 +11,17 @@ export default class View {
           this.nav = new Navbar()
           this.nav.render()
           this.createForm = new FormRender()
-          this.createForm.render()
+          this.renderForm()
           this.table = new Table()
           this.row = new Row()
      }
 
      renderTable() {
           this.table.render(this.root)
+     }
+
+     renderForm() {
+          this.createForm.render()
      }
 
      viewForm() {

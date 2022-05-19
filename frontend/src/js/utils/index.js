@@ -1,13 +1,13 @@
 const baseURL = 'http://localhost:4000/api'
 
-async function getData(path) {
+function getData(path) {
      const data = fetch(`${baseURL}/${path}`)
           .then(res => res.json())
           .then(data => data)
      return data
 }
 
-async function createTodo(path, data) {
+function createTodo(path, data) {
      const result = fetch(`${baseURL}/${path}`, {
           method: 'POST',
           headers: {
@@ -20,19 +20,18 @@ async function createTodo(path, data) {
      return result
 }
 
-async function deleteTodo(path, id) {
-     const result = fetch(`${baseURL}/${path}`, {
+function deleteTodo(path, id) {
+     fetch(`${baseURL}/${path}`, {
           method: 'DELETE',
           headers: {
                'Content-Type': 'application/json'
           }
      })
           .then(res => res.json())
-          .then(data => data)
-     return result
+          .then(data => console.log(data))
 }
 
-async function updateStatus(path, id) {
+function updateStatus(path, id) {
      const result = fetch(`${baseURL}/${path}/${id}`, {
           method: 'PUT',
           headers: {
@@ -44,4 +43,17 @@ async function updateStatus(path, id) {
      return result
 }
 
-export { getData, createTodo, deleteTodo, updateStatus }
+function updateTodo(path, id, data) {
+     const result = fetch(`${baseURL}/${path}/${id}`, {
+          method: 'PUT',
+          headers: {
+               'Content-Type': 'application/json'
+          },
+          body: data
+     })
+          .then(res => res.json())
+          .then(data => data)
+     return result
+}
+
+export { getData, createTodo, deleteTodo, updateStatus, updateTodo }
